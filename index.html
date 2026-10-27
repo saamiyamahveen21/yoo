@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#11101f">
+<title>Before You Fly Away ✦</title>
+<style>
+:root{
+  --night:#11101f; --night2:#19172b; --panel:rgba(255,255,255,.075);
+  --line:rgba(255,255,255,.13); --cream:#fff6ed; --muted:#c9c1d6;
+  --gold:#e9d3a0; --pink:#e8b9d1; --lav:#c6b5f2; --blue:#a9d9e8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--cream);
+  font-family:ui-rounded,"Segoe UI",system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 5%,rgba(111,82,157,.23),transparent 35%),
+    radial-gradient(ellipse at 90% 35%,rgba(68,115,145,.14),transparent 34%),
+    linear-gradient(160deg,#11101f,#171426 55%,#101523);
+  overflow-x:hidden;
+}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;border-radius:50%;background:#fff5d9;opacity:.5;animation:twinkle var(--dur,3s) ease-in-out infinite alternate}
+.shooting{position:absolute;width:100px;height:1px;background:linear-gradient(90deg,transparent,#e9d3ff,transparent);transform:rotate(-35deg);animation:shoot 8s linear infinite;opacity:0}
+@keyframes twinkle{from{opacity:.16;transform:scale(.7)}to{opacity:.9;transform:scale(1.35)}}
+@keyframes shoot{0%,72%{opacity:0;transform:translate(0,0) rotate(-35deg)}75%{opacity:.8}83%{opacity:0;transform:translate(-240px,150px) rotate(-35deg)}100%{opacity:0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(233,211,160,.0)}50%{box-shadow:0 0 0 9px rgba(233,211,160,.05)}}
+main,.footer{position:relative;z-index:1}
+.wrap{width:min(1040px,calc(100% - 32px));margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;color:var(--muted);font-size:.83rem;letter-spacing:.07em}
+.brand{color:var(--gold);font-weight:750;letter-spacing:.12em}
+.nav-pill{border:1px solid var(--line);border-radius:99px;padding:8px 12px}
+.hero{min-height:590px;display:grid;place-items:center;text-align:center;padding:60px 0 75px}
+.moon{font-size:2.5rem;color:var(--gold);display:inline-block;animation:float 4s ease-in-out infinite}
+.eyebrow{color:var(--gold);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;margin:16px 0}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.65rem,7vw,5.6rem);line-height:1.04;font-weight:400;letter-spacing:-.04em;margin:14px 0}
+h1 em{color:var(--pink);font-weight:400}
+.lead{max-width:560px;margin:20px auto 28px;color:var(--muted);font-size:1.05rem;line-height:1.8}
+.btn{border:0;border-radius:999px;padding:13px 20px;background:linear-gradient(120deg,#f0dcb0,#e8bdd6);color:#21172b;font-weight:750;cursor:pointer;box-shadow:0 10px 30px #0003;transition:transform .2s,filter .2s;font-size:.92rem}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn.secondary{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--cream)}
+.scroll-hint{display:block;margin-top:45px;color:#958ca8;font-size:.75rem;letter-spacing:.12em}
+section{padding:58px 0}
+.section-head{text-align:center;margin-bottom:28px}
+.kicker{color:var(--gold);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.15rem);font-weight:400;margin:10px 0}
+.sub{color:var(--muted);line-height:1.7;max-width:590px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{position:relative;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));padding:22px;min-height:185px;overflow:hidden;transition:transform .25s,border-color .25s;backdrop-filter:blur(8px)}
+.card:hover{transform:translateY(-4px);border-color:#e9d3a066}
+.card-icon{font-size:1.7rem;margin-bottom:17px;display:block}
+.card h3{font-family:Georgia,serif;font-size:1.25rem;font-weight:400;margin:0 0 9px}
+.card p{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0}
+.tap{display:inline-block;color:var(--gold);font-size:.75rem;margin-top:17px;letter-spacing:.05em}
+.card[role=button]{cursor:pointer}
+.card[role=button]:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.hidden-content{display:none;margin-top:15px;padding-top:14px;border-top:1px solid var(--line);color:#f5e9f5;line-height:1.7;font-size:.9rem}
+.card.open .hidden-content{display:block;animation:rise .35s ease}
+.card.open .tap{color:var(--pink)}
+/* quiz */
+.quizbox,.dua-box,.letter-box{max-width:760px;margin:auto;border:1px solid var(--line);border-radius:26px;padding:clamp(22px,5vw,38px);background:rgba(255,255,255,.045);backdrop-filter:blur(10px)}
+.quiz-top{display:flex;justify-content:space-between;color:var(--gold);font-size:.78rem;letter-spacing:.08em}
+.progress{height:4px;background:#ffffff17;border-radius:9px;margin:18px 0 26px;overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));transition:width .3s}
+.question{font:1.7rem Georgia,serif;line-height:1.35;margin:0 0 22px}
+.answers{display:grid;gap:10px}
+.answer{border:1px solid var(--line);background:#ffffff08;border-radius:14px;padding:14px 16px;text-align:left;color:var(--cream);cursor:pointer;transition:.2s;font:inherit}
+.answer:hover{background:#e8b9d11a;border-color:#e8b9d177}
+.answer:disabled{cursor:default;opacity:.85}
+.feedback{min-height:28px;margin-top:15px;color:var(--gold);font-size:.9rem}
+.quiz-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.small-note{color:#9d95ad;font-size:.78rem;line-height:1.6}
+/* star game */
+.star-game{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.star-field{min-height:260px;border:1px solid var(--line);border-radius:22px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,#3b3155,#17162a 70%)}
+.pick-star{position:absolute;border:0;background:none;color:var(--gold);font-size:1.5rem;cursor:pointer;animation:twinkle 2.2s infinite alternate;padding:8px;transition:transform .2s}
+.pick-star:hover{transform:scale(1.35)}
+.star-message{min-height:170px;display:flex;flex-direction:column;justify-content:center}
+.star-message .big{font:1.5rem Georgia,serif;line-height:1.45;color:#fff0d8}
+.star-message p{color:var(--muted);line-height:1.7}
+.counter{color:var(--gold);font-size:.8rem;margin-top:12px}
+/* dua cards */
+.dua-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+.dua-card{perspective:1000px;min-height:225px;cursor:pointer}
+.dua-inner{height:100%;min-height:225px;position:relative;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.dua-card.flipped .dua-inner{transform:rotateY(180deg)}
+.dua-face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(145deg,#26213a,#19182b)}
+.dua-face.back{transform:rotateY(180deg);background:linear-gradient(145deg,#30243d,#191c30)}
+.dua-face .symbol{font-size:1.8rem;color:var(--gold);margin-bottom:13px}
+.dua-face h3{font:1.35rem Georgia,serif;font-weight:400;margin:0 0 9px}
+.dua-face p{color:var(--muted);font-size:.88rem;line-height:1.65;margin:0}
+.arabic{font-size:1.45rem;line-height:1.9;color:#f5e2b9;margin:5px 0 10px;direction:rtl}
+.translit{color:#e7d5b6!important;font-style:italic}
+.source{font-size:.72rem!important;color:#aaa0bb!important;margin-top:10px!important}
+/* envelope */
+.envelope-wrap{display:grid;place-items:center;padding:20px 0 8px}
+.envelope{width:min(360px,88vw);height:225px;position:relative;cursor:pointer;filter:drop-shadow(0 18px 28px #0005);transition:transform .25s}
+.envelope:hover{transform:translateY(-4px)}
+.env-back{position:absolute;inset:0;background:#6b4e77;border-radius:9px}
+.env-letter{position:absolute;left:7%;right:7%;bottom:12px;height:88%;background:#fff5e8;color:#3d3042;border-radius:7px;padding:20px 17px;text-align:center;transition:transform .7s;z-index:1}
+.env-letter h3{font:1.35rem Georgia,serif;margin:6px 0 10px}
+.env-letter p{font-size:.83rem;line-height:1.55;margin:0}
+.env-flap{position:absolute;inset:0;background:#a17ba6;clip-path:polygon(0 0,100% 0,50% 58%);transform-origin:top;transition:transform .65s;z-index:4}
+.env-front{position:absolute;inset:0;background:#8b6894;clip-path:polygon(0 100%,0 0,50% 58%,100% 0,100% 100%);z-index:3;border-radius:0 0 9px 9px}
+.env-seal{position:absolute;z-index:5;top:44%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:#ead6a5;color:#5c4260;display:grid;place-items:center;font-size:1.25rem;transition:opacity .25s}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .env-letter{transform:translateY(-115px);z-index:2}
+.envelope.open .env-seal{opacity:0}
+.env-caption{color:var(--muted);font-size:.85rem;margin-top:18px;text-align:center}
+.final-message{max-width:690px;margin:35px auto 0;text-align:center;display:none;animation:rise .6s ease}
+.final-message.show{display:block}
+.final-message h3{font:clamp(1.8rem,4vw,2.6rem) Georgia,serif;font-weight:400;color:var(--pink)}
+.final-message p{color:var(--muted);line-height:1.85}
+.footer{text-align:center;padding:35px 16px 45px;color:#8f879f;font-size:.78rem}
+.footer .heart{color:var(--pink)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:#f5e8d8;color:#2b2034;padding:11px 16px;border-radius:99px;z-index:9;font-size:.85rem;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:700px){
+ .grid{grid-template-columns:1fr}
+ .card{min-height:auto}
+ .star-game{grid-template-columns:1fr}
+ .star-field{min-height:230px}
+ .dua-grid{grid-template-columns:1fr}
+ .hero{min-height:530px;padding:55px 0}
+ section{padding:45px 0}
+ nav{font-size:.72rem}
+ .nav-pill{padding:7px 9px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<main>
+  <div class="wrap">
+    <nav><span class="brand">✦ A LITTLE SURPRISE</span><span class="nav-pill">made with du'a & care</span></nav>
+    <header class="hero" id="top">
+      <div>
+        <div class="moon" aria-hidden="true">☾</div>
+        <p class="eyebrow">before you fly away</p>
+        <h1>A new chapter.<br><em>A thousand duas.</em></h1>
+        <p class="lead">For the journey ahead, pookie. May your dreams get bigger, your days get kinder, and may you stay the green flag you are. I made you a little something before you go, dude. 🤍</p>
+        <button class="btn" onclick="document.querySelector('#discover').scrollIntoView({behavior:'smooth'})">Let's explore <span aria-hidden="true">✦</span></button>
+        <span class="scroll-hint">SCROLL A LITTLE · TAP A LOT</span>
+      </div>
+    </header>
+
+    <section id="discover">
+      <div class="section-head"><p class="kicker">01 · little things</p><h2>Open what you like</h2><p class="sub">A few tiny cards for your next big adventure. Go on, tap them. They're meant to be opened.</p></div>
+      <div class="grid">
+        <article class="card" role="button" tabindex="0" aria-expanded="false" onclick="toggleCard(this)" onkeydown="cardKey(event,this)">
+          <span class="card-icon">✉</span><h3>A little reminder</h3><p>For the days when everything feels new.</p><span class="tap">TAP TO OPEN ↗</span>
+          <div class="hidden-content">You don't have to have everything figured out on day one. Take things one step at a time, trust your effort, and give yourself room to grow. You're allowed to be a beginner somewhere new. 🤍</div>
+        </article>
+        <article class="card" role="button" tabindex="0" aria-expanded="false" onclick="toggleCard(this)" onkeydown="cardKey(event,this)">
+          <span class="card-icon">☁</span><h3>A tiny travel wish</h3><p>May the journey be easier than you expect.</p><span class="tap">TAP TO OPEN ↗</span>
+          <div class="hidden-content">May your flights be smooth, your luggage arrive with you, your connections be easy, and the person beside you not steal your armrest. Ameen. 😭✈️</div>
+        </article>
+        <article class="card" role="button" tabindex="0" aria-expanded="false" onclick="toggleCard(this)" onkeydown="cardKey(event,this)">
+          <span class="card-icon">✧</span><h3>A secret little wish</h3><p>There's something I hope for you. ✨</p><span class="tap">TAP TO OPEN ↗</span>
+          <div class="hidden-content">I hope this new chapter brings you peace, kind people, meaningful opportunities, and the kind of success that makes every hard day worth it. And I hope you remember how much people back home are rooting for you. 🤍🌙</div>
+        </article>
+        <article class="card" role="button" tabindex="0" aria-expanded="false" onclick="toggleCard(this)" onkeydown="cardKey(event,this)">
+          <span class="card-icon">🫶✨</span><h3>Bade logan, don't forget me!</h3><p>😝</p><span class="tap">TAP TO OPEN ↗</span>
+          <div class="hidden-content">😂✈️ cant even say that gonna miss u coz u were always afar but ya will always try to be the same 😎💅 Time zones alag hai lekin random updates, silly talks, and checking in are still compulsory 😎</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <div class="section-head"><p class="kicker">02 · tiny game</p><h2>Quick little quiz</h2><p class="sub">A very serious test about one certified pookie and green flag. Pick your answers, anna. 👀</p></div>
+      <div class="quizbox">
+        <div class="quiz-top"><span id="quiz-count">QUESTION 1 OF 3</span><span>✦ FOR FUN</span></div>
+        <div class="progress"><span id="quiz-progress"></span></div>
+        <h3 class="question" id="question">What's the most important thing to pack for a new chapter?</h3>
+        <div class="answers" id="answers">
+          <button class="answer" data-correct="false">clothes,perfumes and your rolex😎</button>
+          <button class="answer" data-correct="true">Faith, patience, and a phone charger+santoor😂😝</button>
+          <button class="answer" data-correct="false">passport😂</button>
+        </div>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        <div class="quiz-actions"><button class="btn" id="next-question" hidden>Next question →</button></div>
+        <p class="small-note">P.S. There are no bad answers. Except forgetting your passport. Please don't do that.</p>
+      </div>
+    </section>
+
+    <section id="stars">
+      <div class="section-head"><p class="kicker">03 · make a wish</p><h2>Pick a star ✨</h2><p class="sub">Tap the stars in the sky to collect little wishes and duas for your journey.</p></div>
+      <div class="quizbox star-game">
+        <div class="star-field" id="star-field" aria-label="Tap a star to reveal a wish"></div>
+        <div class="star-message">
+          <p class="kicker">YOUR LITTLE WISH</p>
+          <div class="big" id="star-title">A sky full of good things.</div>
+          <p id="star-text">Choose any glowing star. It has a message waiting for you.</p>
+          <div class="counter" id="star-counter">0 of 6 wishes found</div>
+          <button class="btn secondary" style="margin-top:18px;align-self:flex-start" id="reset-stars">Reset the stars ↻</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="duas">
+      <div class="section-head"><p class="kicker">04.supplications ✨</p><h2>Tap for a dua</h2><p class="sub">Flip a card for a prayer you can carry with you. May Allah grant you safety, ease, and goodness in what comes next.</p></div>
+      <div class="dua-grid">
+        <article class="dua-card" tabindex="0" role="button" aria-label="Flip travel dua card" onclick="flipDua(this)" onkeydown="flipKey(event,this)">
+          <div class="dua-inner"><div class="dua-face"><div class="symbol">☾</div><h3>For safe travel</h3><p>Tap to reveal a dua for the journey.</p><span class="tap">FLIP CARD ↻</span></div>
+          <div class="dua-face back"><div class="arabic">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا</div><p class="translit">Subḥāna alladhī sakhkhara lanā hādhā…</p><p>“Glory be to Him who has subjected this to us…” (part of the travel supplication)</p><p class="source">Qur'an 43:13 · continue through 43:14</p></div></div>
+        </article>
+        <article class="dua-card" tabindex="0" role="button" aria-label="Flip ease dua card" onclick="flipDua(this)" onkeydown="flipKey(event,this)">
+          <div class="dua-inner"><div class="dua-face"><div class="symbol">✧</div><h3>For ease & success</h3><p>For new challenges and important moments.</p><span class="tap">FLIP CARD ↻</span></div>
+          <div class="dua-face back"><div class="arabic">رَبِّ اشْرَحْ لِي صَدْرِي ۝ وَيَسِّرْ لِي أَمْرِي</div><p class="translit">Rabbi ishraḥ lī ṣadrī, wa yassir lī amrī.</p><p>“My Lord, expand for me my breast and ease for me my task.”</p><p class="source">Qur'an 20:25–26</p></div></div>
+        </article>
+        <article class="dua-card" tabindex="0" role="button" aria-label="Flip protection dua card" onclick="flipDua(this)" onkeydown="flipKey(event,this)">
+          <div class="dua-inner"><div class="dua-face"><div class="symbol">❋</div><h3>For protection</h3><p>A short supplication for Allah's care.</p><span class="tap">FLIP CARD ↻</span></div>
+          <div class="dua-face back"><div class="arabic">أَسْتَوْدِعُ اللَّهَ دِينَكَ وَأَمَانَتَكَ وَخَوَاتِيمَ عَمَلِكَ</div><p class="translit">Astawdiʿullāha dīnaka wa amānataka wa khawātīma ʿamalik.</p><p>“I entrust to Allah your faith, what you are responsible for, and the endings of your deeds.”</p><p class="source">A farewell supplication · Jāmiʿ at-Tirmidhī 3443</p></div></div>
+        </article>
+        <article class="dua-card" tabindex="0" role="button" aria-label="Flip good in this life and next dua card" onclick="flipDua(this)" onkeydown="flipKey(event,this)">
+          <div class="dua-inner"><div class="dua-face"><div class="symbol">♡</div><h3>For goodness ahead</h3><p>For this life and the next.</p><span class="tap">FLIP CARD ↻</span></div>
+          <div class="dua-face back"><div class="arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً</div><p class="translit">Rabbanā ātinā fid-dunyā ḥasanatan wa fil-ākhirati ḥasanah.</p><p>“Our Lord, give us good in this world and good in the Hereafter.”</p><p class="source">Qur'an 2:201 · verse continues with a prayer for protection from the Fire</p></div></div>
+        </article>
+      </div>
+      <p class="small-note" style="text-align:center;margin-top:18px">Arabic transliteration is approximate. For the complete travel supplication, recite Qur'an 43:13–14 or use a trusted du'a reference.</p>
+    </section>
+
+    <section id="letter">
+      <div class="section-head"><p class="kicker">05 · one last thing</p><h2>yup yup😌i know the site is cute</h2><p class="sub"> Tap to open. 🤍</p></div>
+      <div class="envelope-wrap">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the farewell envelope" onclick="openEnvelope()" onkeydown="envelopeKey(event)">
+          <div class="env-back"></div>
+          <div class="env-letter"><h3>For your next chapter ✦</h3><p>May the road rise to meet you,<br>may your efforts bear beautiful fruit,<br>and may Allah keep you in His care.</p><p style="margin-top:9px;font-family:Georgia,serif;font-style:italic">Fi amaanillah 🤍</p></div>
+          <div class="env-flap"></div><div class="env-front"></div><div class="env-seal">✦</div>
+        </div>
+        <p class="env-caption" id="env-caption">TAP THE ENVELOPE TO OPEN YOUR MESSAGE</p>
+      </div>
+      <div class="final-message" id="final-message">
+        <h3>🌸yup made this for you attu anna and A small message follows😌🌸</h3>
+        <p>Dude, may Allah make your journey safe, your new home welcoming, your work rewarding, and your path full of barakah. May He protect you wherever you go, grant you good health and good company, and bring you success in ways better than you imagined.</p>
+        <p>Take alot of care 🫶, Belive in yourself😎,stay cool 🗿🤘 . Stay a pookie 🎀</p>
+        <p style="font-size:1.12rem;color:var(--gold)">Had alot more to say 🦋  but thats all for now 💫</p>
+        <p style="color:var(--gold);font-family:Georgia,serif;font-size:1.15rem">Fi amaanillah — in Allah's protection.</p>
+        <button class="btn secondary" onclick="copyGreeting()">Copy the safe journey wish ♡</button>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="footer"><div>Made with care, a little sparkle, and lots of du'a <span class="heart">♡</span></div><div style="margin-top:8px">May Allah guide you, protect you, and place barakah in your journey.</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+/* Starry sky: generated with CSS, no images or external assets. */
+(function makeSky(){
+  const sky=document.getElementById('sky');
+  for(let i=0;i<95;i++){
+    const s=document.createElement('i');s.className='star';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    const size=(Math.random()*2.2+.7);s.style.width=size+'px';s.style.height=size+'px';
+    s.style.setProperty('--dur',(2+Math.random()*4)+'s');s.style.animationDelay=(-Math.random()*5)+'s';
+    sky.appendChild(s);
+  }
+  const shoot=document.createElement('i');shoot.className='shooting';shoot.style.left='75%';shoot.style.top='20%';sky.appendChild(shoot);
+})();
+function toggleCard(card){
+  const isOpen=card.classList.toggle('open');card.setAttribute('aria-expanded',String(isOpen));
+  const tap=card.querySelector('.tap');tap.textContent=isOpen?'TAP TO CLOSE ↙':'TAP TO OPEN ↗';
+}
+function cardKey(e,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleCard(card)}}
+function flipDua(card){card.classList.toggle('flipped')}
+function flipKey(e,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();flipDua(card)}}
+
+/* Friendly, light-hearted quiz. The correct choices are not personal facts. */
+const questions=[
+ {q:"who is attu anna …",a:["CEO of a company" ,"Certified pookie + green flag","khadus and akdu"],correct:1,yes:"EXACTLY. Pookie status: confirmed,  also akdu ...Green flag behaviour: under observation. 💚",no:"Cute guess, but the official title is pookie + green flag and also akdu and khadus😌"},
+ {q:"what are you gonna think when u are gonna get a text from my side?",a:["am really busy not now","naaaaaaaaaaaaaaaaa","hehehehehehehehehehehe"],correct:1,yes:"CORRECT. hehehehehehehehehehe 🤍",no:"hehehehehehehehehehehehehehe"},
+ {q:"A green-flag pookie moving abroad should remember to…",a:["Forget everyone as soon as he lands","Work hard, make du'a, stay humble, and check in sometimes","Become famous and start charging for replies"],correct:1,yes:"THAT'S THE ONE, DUDE. May Allah bless your effort and keep your heart kind. Ameen. 💚",no:"Anna's very reasonable terms and conditions: make du'a, chase your dreams, stay humble, and text back sometimes. 😂"}
+]
+let qi=0,score=0,answered=false;
+const qEl=document.getElementById('question'),aEl=document.getElementById('answers'),fb=document.getElementById('feedback'),next=document.getElementById('next-question');
+function renderQuestion(){
+ const q=questions[qi];document.getElementById('quiz-count').textContent=`QUESTION ${qi+1} OF ${questions.length}`;
+ document.getElementById('quiz-progress').style.width=(qi/questions.length*100)+'%';qEl.textContent=q.q;fb.textContent='';next.hidden=true;answered=false;aEl.innerHTML='';
+ q.a.forEach((label,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=label;b.onclick=()=>answerQuestion(i,b);aEl.appendChild(b)});
+}
+function answerQuestion(i,button){
+ if(answered)return;answered=true;const q=questions[qi];const buttons=[...aEl.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);
+ if(i===q.correct){score++;fb.textContent=q.yes}else fb.textContent=q.no;
+ button.style.borderColor=i===q.correct?'#b9d7b5':'#e8b9d1';
+ document.getElementById('quiz-progress').style.width=((qi+1)/questions.length*100)+'%';
+ next.hidden=false;next.textContent=qi===questions.length-1?'See your result ✦':'Next question →';
+}
+let quizFinished=false;
+next.addEventListener('click',()=>{
+ if(quizFinished){qi=0;score=0;quizFinished=false;renderQuestion();return}
+ if(qi<questions.length-1){qi++;renderQuestion();return}
+ quizFinished=true;
+ qEl.textContent=score===3?'Perfect score. You understood the assignment. ✨':score===2?'A pretty solid result. 🤍':'Quiz completed — that\'s what counts. ✨';
+ aEl.innerHTML='';fb.textContent=`You got ${score} out of ${questions.length}. Real-life mission, dude: travel safely, work hard, make lots of du'a, and don't forget anna. 💚`;
+ document.getElementById('quiz-progress').style.width='100%';next.textContent='Play again ↻';
+});
+renderQuestion();
+
+/* Tap-a-star mini game. Each star gives one distinct wish. */
+const wishes=[
+ ["A safe journey","May Allah protect you from harm, ease your travels, and bring you safely to your destination. Ameen."],
+ ["Career barakah","May Allah place barakah in your work, guide your choices, and grant you halal, fulfilling success."],
+ ["Good company","May you find kind people who respect you, support you, and bring goodness into your life."],
+ ["Peace of heart","May Allah calm your worries, strengthen your heart, and make the unfamiliar feel easier with time."],
+ ["Open doors","May doors of goodness open for you, and may you be guided away from what is not good for you."],
+ ["A beautiful return","May you make wonderful memories, grow in ways that benefit you, and always have a place that feels like home, pookie."]
+];
+const field=document.getElementById('star-field');let found=new Set();
+function buildStars(){
+ field.innerHTML='';found=new Set();
+ const positions=[[16,22],[66,15],[43,48],[80,58],[23,74],[58,83]];
+ positions.forEach(([x,y],i)=>{
+  const b=document.createElement('button');b.className='pick-star';b.textContent='✦';b.style.left=x+'%';b.style.top=y+'%';b.style.animationDelay=(i*.3)+'s';b.setAttribute('aria-label','Reveal wish '+(i+1));
+  b.onclick=()=>revealWish(i,b);field.appendChild(b);
+ });
+ updateCounter();document.getElementById('star-title').textContent='A sky full of good things.';document.getElementById('star-text').textContent='Choose any glowing star. It has a message waiting for you.';
+}
+function revealWish(i,b){
+ if(found.has(i)){showToast('You already collected this wish ✨');return}
+ found.add(i);b.textContent='✧';b.style.color='#fff';b.style.transform='scale(1.5)';b.style.pointerEvents='none';
+ document.getElementById('star-title').textContent=wishes[i][0];document.getElementById('star-text').textContent=wishes[i][1];updateCounter();
+ if(found.size===wishes.length)showToast('You collected every wish. May they all come true, in shaa Allah. 🤍');
+}
+function updateCounter(){document.getElementById('star-counter').textContent=`${found.size} of ${wishes.length} wishes found`}
+document.getElementById('reset-stars').addEventListener('click',buildStars);buildStars();
+
+/* Envelope reveal and copyable greeting. */
+function openEnvelope(){
+ const env=document.getElementById('envelope');const isOpen=env.classList.toggle('open');
+ document.getElementById('env-caption').textContent=isOpen?'A LITTLE DUA FOR THE ROAD 🤍':'TAP THE ENVELOPE TO OPEN YOUR MESSAGE';
+ document.getElementById('final-message').classList.toggle('show',isOpen);
+ if(isOpen)setTimeout(()=>document.getElementById('final-message').scrollIntoView({behavior:'smooth',block:'nearest'}),300);
+}
+function envelopeKey(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openEnvelope()}}
+const greeting="Safe travels, dude! ✈️ May Allah keep you safe throughout your journey, make your new chapter full of ease and barakah, bless your career with halal and fulfilling success, surround you with good people, and grant you peace wherever you go. Ameen. Fi amaanillah 🤍\n\nAur suno, bade logan 😂 — abroad jaake mujhe bhool mat jaana! Random updates, silly conversations, and checking in are compulsory, samjhe? 🥹🫶🏻 Stay a pookie and a green flag, anna is counting on you. 💚";
+async function copyGreeting(){
+ try{await navigator.clipboard.writeText(greeting);showToast('Safe journey wish copied 🤍')}
+ catch(e){const t=document.createElement('textarea');t.value=greeting;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();showToast('Safe journey wish copied 🤍')}
+}
+let toastTimer;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2700)}
+</script>
+</body>
+<script>
+(() => {
+  const TRACKING_ENDPOINT = "https://script.google.com/macros/s/AKfycbzekzyKYcLIYLf7Uvsp7oYPyHzrtJd6vf_HxkdywJI8UfKnnQdpFCY0dYkDqKfJp8iVMg/exec";;
+  if (!TRACKING_ENDPOINT.startsWith("https://script.google.com/")) {
+    console.warn("Activity tracking is not configured yet: paste your Apps Script web app URL.");
+    return;
+  }
+
+  const getId = (storage, key) => {
+    let value = storage.getItem(key);
+    if (!value) {
+      value = (crypto.randomUUID ? crypto.randomUUID() :
+        "id-" + Date.now() + "-" + Math.random().toString(16).slice(2));
+      storage.setItem(key, value);
+    }
+    return value;
+  };
+
+  let visitorId, sessionId;
+  try {
+    visitorId = getId(localStorage, "bfya_visitor_id");
+    sessionId = getId(sessionStorage, "bfya_session_id");
+  } catch (_) {
+    visitorId = "temporary-" + Math.random().toString(16).slice(2);
+    sessionId = "session-" + Date.now();
+  }
+
+  function track(eventName, data = {}) {
+    const payload = {
+      event: eventName,
+      visitorId,
+      sessionId,
+      timestamp: new Date().toISOString(),
+      pageUrl: location.href,
+      ...data
+    };
+
+    // Apps Script accepts a URL-encoded payload. no-cors means the browser
+    // won't expose the response to this page; it does not confirm delivery.
+    try {
+      fetch(TRACKING_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams({ payload: JSON.stringify(payload) }),
+        keepalive: true
+      }).catch(() => {});
+    } catch (_) {}
+  }
+
+  track("visit_started", { details: { referrer: document.referrer || "direct/unknown" } });
+
+  // Open/close reminder cards.
+  document.addEventListener("click", event => {
+    const card = event.target.closest(".card[role='button']");
+    if (card) {
+      track(card.classList.contains("open") ? "reminder_card_opened" : "reminder_card_closed", {
+        item: card.querySelector("h3")?.textContent.trim() || "Reminder card"
+      });
+      return;
+    }
+
+    // Quiz answer handler runs on the button before this document listener.
+    const answerButton = event.target.closest("#answers .answer");
+    if (answerButton && typeof questions !== "undefined" && typeof qi !== "undefined") {
+      const question = questions[qi];
+      const buttons = [...document.querySelectorAll("#answers .answer")];
+      const selectedIndex = buttons.indexOf(answerButton);
+      const correct = selectedIndex === question.correct;
+      track("quiz_answer", {
+        question: question.q,
+        answer: answerButton.textContent.trim(),
+        correct,
+        score: typeof score === "number" ? score : "",
+        item: "Question " + (qi + 1)
+      });
+      return;
+    }
+
+    const star = event.target.closest(".pick-star");
+    if (star) {
+      const match = (star.getAttribute("aria-label") || "").match(/(\d+)/);
+      const index = match ? Number(match[1]) - 1 : -1;
+      const title = document.getElementById("star-title")?.textContent.trim() || "";
+      track("star_wish_opened", {
+        item: title,
+        details: { wishNumber: index + 1, wishTitle: title }
+      });
+      return;
+    }
+
+    const dua = event.target.closest(".dua-card");
+    if (dua) {
+      track(dua.classList.contains("flipped") ? "dua_card_flipped_to_dua" : "dua_card_flipped_back", {
+        item: dua.querySelector(".dua-face h3")?.textContent.trim() ||
+              dua.getAttribute("aria-label") || "Dua card"
+      });
+      return;
+    }
+
+    const envelope = event.target.closest("#envelope");
+    if (envelope) {
+      track(envelope.classList.contains("open") ? "final_envelope_opened" : "final_envelope_closed");
+      return;
+    }
+
+    if (event.target.closest("#next-question")) {
+      const nextButton = document.getElementById("next-question");
+      if (nextButton && nextButton.textContent.includes("Play again")) {
+        const match = (document.getElementById("feedback")?.textContent || "").match(/You got (\d+) out of (\d+)/);
+        track("quiz_completed", {
+          score: match ? match[1] + "/" + match[2] : "",
+          details: { result: document.getElementById("question")?.textContent || "" }
+        });
+      } else {
+        track("quiz_next_clicked", { item: nextButton?.textContent.trim() || "" });
+      }
+      return;
+    }
+
+    if (event.target.closest("button")?.textContent.includes("Copy the safe journey wish")) {
+      track("safe_journey_message_copy_clicked");
+    }
+  });
+
+  // Record when the page is being left. This is best-effort, not guaranteed.
+  window.addEventListener("pagehide", () => track("page_left"));
+})();
+</script>
+
+</html>
