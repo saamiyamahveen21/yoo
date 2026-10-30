@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#11101f">
-<title>Before You Fly Away ✦</title>
+<meta name="theme-color" content="#100b13">
+<title>A Few Things for the Road ✦</title>
 <style>
 :root{
   --night:#11101f; --night2:#19172b; --panel:rgba(255,255,255,.075);
@@ -132,19 +132,61 @@ h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.15rem)
  .nav-pill{padding:7px 9px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* --- Darker romantic plum / rose theme --- */
+:root{--night:#100b13;--night2:#1b111b;--panel:rgba(43,25,39,.82);--line:rgba(211,157,171,.2);--cream:#f6e9eb;--muted:#c0aab3;--gold:#d7b58e;--pink:#d18a9e;--lav:#b69ab8;--blue:#9db4c2}
+body{color:var(--cream);background:radial-gradient(ellipse at 12% 5%,rgba(105,48,78,.28),transparent 38%),radial-gradient(ellipse at 88% 35%,rgba(65,43,78,.22),transparent 36%),linear-gradient(155deg,#0b0810,#170e19 55%,#100b15)}
+#sky .star{background:#f1dbe1;opacity:.35} #sky .shooting{background:linear-gradient(90deg,transparent,#d7a5bd,transparent)}
+nav{color:#bda7b1}.brand,.eyebrow,.kicker,.quiz-top,.counter{color:var(--gold)}.nav-pill{border-color:var(--line);background:rgba(38,22,35,.72)}
+h1 em{color:var(--pink)}.lead,.sub,.card p,.star-message p,.small-note,.env-caption{color:var(--muted)}
+.btn{background:linear-gradient(120deg,#744256,#563348);color:#fff0f1;border:1px solid #c58a9b66;box-shadow:0 9px 25px rgba(0,0,0,.28)}
+.btn:hover{filter:brightness(1.16)}.btn.secondary{border-color:#bd879766;color:var(--cream);background:rgba(45,25,41,.48)}
+.card,.quizbox,.dua-box,.letter-box{border-color:var(--line);background:linear-gradient(145deg,rgba(54,31,48,.88),rgba(27,17,31,.91));box-shadow:0 12px 35px rgba(0,0,0,.22);backdrop-filter:blur(12px)}
+.card:hover{border-color:#d18a9e88}.card h3,.dua-face h3{color:#f1dce2}.hidden-content{color:#e5cbd4;border-color:rgba(211,157,171,.2)}
+.progress{background:#ffffff18}.progress span{background:linear-gradient(90deg,#b96d88,#d7b58e)}.question{color:#f4e3e8}
+.answer{color:#f1e3e8;background:rgba(17,10,19,.62);border-color:rgba(211,157,171,.22)}.answer:hover{background:rgba(131,67,91,.28);border-color:#d18a9e99}.answer:disabled{background:rgba(131,67,91,.18)}.feedback{color:var(--gold)}
+.star-field{background:radial-gradient(circle at 50% 45%,#493044,#17101f 72%);border-color:var(--line)}.pick-star{color:var(--gold)}.star-message .big{color:#f1dce2}
+.dua-face{border-color:var(--line);background:linear-gradient(145deg,#302033,#1c1422)}.dua-face.back{background:linear-gradient(145deg,#392338,#211725)}
+.dua-face p{color:#d0bac4}.arabic{color:#e4c49d}.translit{color:#d7b58e!important}.source{color:#bba8b5!important}
+.env-back{background:#573047}.env-letter{background:#241725;color:#f4e6e8;box-shadow:0 5px 18px #0005}.env-flap{background:#8a536b}.env-front{background:#704257}.env-seal{background:#d7b58e;color:#38202e}
+.final-message h3{color:var(--pink)}.final-message p{color:#d0bac4}.final-message p[style*="gold"]{color:var(--gold)!important}
+.footer{color:#a993a2}.footer .heart{color:var(--pink)}.toast{background:#382333;color:#fff0f1;border:1px solid var(--line);box-shadow:0 8px 25px #0005}
+.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.note-card{min-height:190px;padding:24px 23px;border:1px solid var(--line);border-radius:8px 22px 22px 22px;background:linear-gradient(145deg,rgba(55,32,49,.92),rgba(31,19,34,.95));box-shadow:0 10px 28px rgba(0,0,0,.2);position:relative}
+.note-card:before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:4px;background:#a9687d}
+.note-label{font-size:.65rem;letter-spacing:.16em;color:var(--gold)}.note-card p{font:1.08rem/1.75 Georgia,serif;color:#ead8df;margin:17px 0 0}
+.note-card-special{background:linear-gradient(145deg,#45283d,#291a2c)}.note-card-special:before{background:var(--pink)}
+@media(max-width:700px){.note-grid{grid-template-columns:1fr}.note-card{min-height:unset}}
+
+/* Tiny heart details: romantic, but deliberately understated */
+@keyframes heartFloat {0%{transform:translateY(14px) scale(.85);opacity:0}18%{opacity:.48}82%{opacity:.38}100%{transform:translateY(-105vh) scale(1.12);opacity:0}}
+@keyframes heartBeat {0%,100%{transform:scale(1)}14%{transform:scale(1.16)}28%{transform:scale(1)}42%{transform:scale(1.1)}58%{transform:scale(1)}}
+.floating-heart{position:fixed;bottom:-25px;z-index:0;pointer-events:none;color:#d18a9e;animation:heartFloat linear forwards;text-shadow:0 2px 8px #d18a9e35}
+.brand{position:relative}.brand:after{content:"♡";font-size:.85em;margin-left:7px;color:var(--pink)}
+.heart-row{display:flex;justify-content:center;align-items:center;gap:clamp(12px,4vw,34px);flex-wrap:wrap;padding:16px 0 24px}
+.heart-pick{width:76px;height:76px;border:0;background:transparent;position:relative;cursor:pointer;color:#c77991;transition:transform .22s,filter .22s}
+.heart-pick span{font-size:4.3rem;line-height:1;display:block;text-shadow:0 7px 18px #d18a9e35;transition:transform .25s}
+.heart-pick small{position:absolute;inset:31px 0 auto;font-size:.62rem;letter-spacing:.08em;color:#fff0f2;pointer-events:none}
+.heart-pick:hover{transform:translateY(-5px) rotate(-5deg);filter:brightness(1.12)}.heart-pick.selected span{animation:heartBeat .8s ease;color:#e09aab}
+.heart-reveal{max-width:590px;min-height:112px;margin:0 auto;text-align:center;padding:22px 28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(55,32,49,.92),rgba(31,19,34,.95));box-shadow:0 10px 28px rgba(0,0,0,.2)}
+.reveal-heart{display:block;color:var(--pink);font-size:1.35rem;margin-bottom:7px;animation:heartBeat 2.2s infinite}.heart-reveal p{margin:0;color:#ead8df;font:1.08rem/1.7 Georgia,serif}
+.note-card:after{content:"♡";position:absolute;right:18px;top:13px;color:var(--pink);font-size:1.15rem;opacity:.8}.env-seal{font-size:1.15rem}
+@media(max-width:700px){.heart-pick{width:62px;height:62px}.heart-pick span{font-size:3.7rem}.heart-pick small{inset:27px 0 auto}}
+@media(prefers-reduced-motion:reduce){.floating-heart{display:none}.reveal-heart{animation:none}}
+
 </style>
 </head>
 <body>
 <div id="sky" aria-hidden="true"></div>
 <main>
   <div class="wrap">
-    <nav><span class="brand">✦ A LITTLE SURPRISE</span><span class="nav-pill">made with du'a & care</span></nav>
+    <nav><span class="brand">♡ A LITTLE NOTEBOOK</span><span class="nav-pill">for whenever you need it</span></nav>
     <header class="hero" id="top">
       <div>
         <div class="moon" aria-hidden="true">☾</div>
-        <p class="eyebrow">before you fly away</p>
-        <h1>A new chapter.<br><em>A thousand duas.</em></h1>
-        <p class="lead">For the journey ahead, pookie. May your dreams get bigger, your days get kinder, and may you stay the green flag you are. I made you a little something before you go, dude. 🤍</p>
+        <p class="eyebrow">a little something before you go</p>
+        <h1>For the road ahead.<br><em>And everything between.</em></h1>
+        <p class="lead">Just a small collection of reminders, duas, and things that are easier to write than say. Take what you need, whenever you need it. 🤍</p>
         <button class="btn" onclick="document.querySelector('#discover').scrollIntoView({behavior:'smooth'})">Let's explore <span aria-hidden="true">✦</span></button>
         <span class="scroll-hint">SCROLL A LITTLE · TAP A LOT</span>
       </div>
@@ -173,19 +215,19 @@ h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.15rem)
     </section>
 
     <section id="quiz">
-      <div class="section-head"><p class="kicker">02 · tiny game</p><h2>Quick little quiz</h2><p class="sub">A very serious test about one certified pookie and green flag. Pick your answers, anna. 👀</p></div>
+      <div class="section-head"><p class="kicker">02 · just us ♡</p><h2>Our little corner</h2><p class="sub">A tiny corner for the questions, little thoughts, and answers that belong to us. No right or wrong answers — just pick what feels like you. 🤍</p></div>
       <div class="quizbox">
-        <div class="quiz-top"><span id="quiz-count">QUESTION 1 OF 3</span><span>✦ FOR FUN</span></div>
+        <div class="quiz-top"><span id="quiz-count">QUESTION 1 OF 10</span><span>♡ JUST BETWEEN US</span></div>
         <div class="progress"><span id="quiz-progress"></span></div>
-        <h3 class="question" id="question">What's the most important thing to pack for a new chapter?</h3>
+        <h3 class="question" id="question">If we were together for an entire day, what would you choose?</h3>
         <div class="answers" id="answers">
-          <button class="answer" data-correct="false">clothes,perfumes and your rolex😎</button>
-          <button class="answer" data-correct="true">Faith, patience, and a phone charger+santoor😂😝</button>
-          <button class="answer" data-correct="false">passport😂</button>
+          <button class="answer">Going somewhere spontaneous</button>
+          <button class="answer">Staying in and talking for hours</button>
+          <button class="answer">Doing absolutely nothing, just being together</button>
         </div>
         <div class="feedback" id="feedback" aria-live="polite"></div>
         <div class="quiz-actions"><button class="btn" id="next-question" hidden>Next question →</button></div>
-        <p class="small-note">P.S. There are no bad answers. Except forgetting your passport. Please don't do that.</p>
+        <p class="small-note">P.S. No scores, no wrong answers. I just wanna know what you think. ♡</p>
       </div>
     </section>
 
@@ -223,11 +265,65 @@ h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.15rem)
           <div class="dua-face back"><div class="arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً</div><p class="translit">Rabbanā ātinā fid-dunyā ḥasanatan wa fil-ākhirati ḥasanah.</p><p>“Our Lord, give us good in this world and good in the Hereafter.”</p><p class="source">Qur'an 2:201 · verse continues with a prayer for protection from the Fire</p></div></div>
         </article>
       </div>
-      <p class="small-note" style="text-align:center;margin-top:18px">Arabic transliteration is approximate. For the complete travel supplication, recite Qur'an 43:13–14 or use a trusted du'a reference.</p>
+       </section>
+
+
+
+    <section id="heart-notes">
+      <div class="section-head">
+        <p class="kicker">♡ a tiny heart collection</p>
+        <h2>Pick a little heart</h2>
+        <p class="sub">Each one has a small note tucked inside. Nothing too serious. Just a little something.</p>
+      </div>
+      <div class="heart-row">
+        <button class="heart-pick" type="button" data-message="Remember to take care of yourself, okay? Someone's quietly rooting for you. 🤍" aria-label="Open heart one"><span>♡</span><small>01</small></button>
+        <button class="heart-pick" type="button" data-message="Some conversations just make an ordinary day better. Yours happen to be one of those. 🌷" aria-label="Open heart two"><span>♡</span><small>02</small></button>
+        <button class="heart-pick" type="button" data-message="I hope something unexpectedly lovely happens to you today. You deserve those little moments. ✨" aria-label="Open heart three"><span>♡</span><small>03</small></button>
+        <button class="heart-pick" type="button" data-message="No matter how far the map stretches, good people don't become strangers that easily. 🫶" aria-label="Open heart four"><span>♡</span><small>04</small></button>
+        <button class="heart-pick" type="button" data-message="This is your reminder that you're capable enough to conqure everything out thier ..believe in yourself. 😌" aria-label="Open heart five"><span>♡</span><small>05</small></button>
+      </div>
+      <div class="heart-reveal" id="heart-reveal" aria-live="polite">
+        <span class="reveal-heart">♡</span>
+        <p id="heart-message">Choose one. There's a note waiting.</p>
+      </div>
+    </section>
+
+    <section id="little-notes">
+      <div class="section-head">
+        <p class="kicker">05 · tucked-away thoughts</p>
+        <h2>A few things to remember</h2>
+        <p class="sub">Little notes for random days. Some are reminders, some are just… things worth saying.</p>
+      </div>
+      <div class="note-grid">
+        <article class="note-card"><span class="note-label">WHEN THE DAY IS LONG</span>
+          <p>You don't have to make every day count in a big way. Some days, getting through it is enough.</p>
+          <!-- EDIT THIS MESSAGE: note for a difficult day -->
+        </article>
+        <article class="note-card"><span class="note-label">A RANDOM REMINDER</span>
+          <p>Don't forget to eat properly, get some rest, and love youself </p>
+          <!-- EDIT THIS MESSAGE: everyday reminder -->
+        </article>
+        <article class="note-card"><span class="note-label">WHEN SOMETHING GOOD HAPPENS</span>
+          <p>I hope you get a hundred little reasons to smile. And I hope this pookie tells me about at least a few of them.</p>
+          <!-- EDIT THIS MESSAGE: celebrate their wins -->
+        </article>
+        <article class="note-card"><span class="note-label">FOR THE QUIET MOMENTS</span>
+          <p>Even when life gets busy and replies get late, some one 👀 is still quietly wishing the best for you.</p>
+          <!-- EDIT THIS MESSAGE: subtle affectionate message -->
+        </article>
+        <article class="note-card"><span class="note-label">Your Next Little Mission👀✨</span>
+          <p>insta pe aao anna full meme's share karinge 🎀 😌</p>
+          
+        </article>
+        <article class="note-card note-card-special"><span class="note-label">SOMETHING that will never change</span>
+          <p>you will always and always find me among your well wishers no matter what i cherish each and every convo that we share and overhsared too 😂🎀 There are a few more things I could write here. Maybe I'll save them for another day.</p>
+        
+        </article>
+      </div>
     </section>
 
     <section id="letter">
-      <div class="section-head"><p class="kicker">05 · one last thing</p><h2>yup yup😌i know the site is cute</h2><p class="sub"> Tap to open. 🤍</p></div>
+      <div class="section-head"><p class="kicker">06 · one last thing</p><h2>One last note</h2><p class="sub"> 🤍</p></div>
       <div class="envelope-wrap">
         <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the farewell envelope" onclick="openEnvelope()" onkeydown="envelopeKey(event)">
           <div class="env-back"></div>
@@ -237,9 +333,10 @@ h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.15rem)
         <p class="env-caption" id="env-caption">TAP THE ENVELOPE TO OPEN YOUR MESSAGE</p>
       </div>
       <div class="final-message" id="final-message">
-        <h3>🌸yup made this for you attu anna and A small message follows😌🌸</h3>
-        <p>Dude, may Allah make your journey safe, your new home welcoming, your work rewarding, and your path full of barakah. May He protect you wherever you go, grant you good health and good company, and bring you success in ways better than you imagined.</p>
-        <p>Take alot of care 🫶, Believe in yourself😎,stay cool 🗿🤘 . Stay a pookie 🎀</p>
+        <h2>🌸yup made this for you attu anna and A small message follows😌🌸</h2>
+        <p>Honestly dude, talking to you made me feel that there are good men out there and this person is surely a green flag and a pookie 😂🎀, whatever i said or behaved like is completely true and ya the way we see life might be different and we surely have different perspectives of life but i truely respect yours too coz thats what makes people different.....You are really a accountable man ma sha allah ,never seen such a accountable young man before 😂✨, and am sorry if i ever said or made you sad ... and i hope u dont find me wrong coz i never meant to be that for you....and ya santoor yaadse lelo dude 🤣  </p>
+        <p>May Allah make your journey safe, your new home welcoming, your work rewarding, and your path full of barakah. May He protect you wherever you go, grant you good health and good company, and bring you success in ways better than you imagined.</p>
+        <p>Take alot of care 🫶, Belive in yourself😎,stay cool 🗿🤘 . Stay a pookie 🎀</p>
         <p style="font-size:1.12rem;color:var(--gold)">Had alot more to say 🦋  but thats all for now 💫</p>
         <p style="color:var(--gold);font-family:Georgia,serif;font-size:1.15rem">Fi amaanillah — in Allah's protection.</p>
         <button class="btn secondary" onclick="copyGreeting()">Copy the safe journey wish ♡</button>
@@ -250,6 +347,41 @@ h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.15rem)
 <footer class="footer"><div>Made with care, a little sparkle, and lots of du'a <span class="heart">♡</span></div><div style="margin-top:8px">May Allah guide you, protect you, and place barakah in your journey.</div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
+
+/* Heart notes and a very light floating-heart detail */
+document.querySelectorAll('.heart-pick').forEach(button=>{
+  button.addEventListener('click',()=>{
+    document.querySelectorAll('.heart-pick').forEach(item=>item.classList.remove('selected'));
+    button.classList.add('selected');
+    document.getElementById('heart-message').textContent=button.dataset.message;
+    const heart=document.createElement('span');
+    heart.className='floating-heart';
+    heart.textContent='♡';
+    heart.style.left=(button.getBoundingClientRect().left+button.offsetWidth/2)+'px';
+    heart.style.fontSize=(14+Math.random()*12)+'px';
+    heart.style.animationDuration=(3.5+Math.random()*2)+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  });
+});
+(function gentleHearts(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let last=0;
+  function addHeart(){
+    const heart=document.createElement('span');
+    heart.className='floating-heart';
+    heart.textContent=Math.random()>.5?'♡':'♥';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.fontSize=(10+Math.random()*10)+'px';
+    heart.style.opacity='.25';
+    heart.style.animationDuration=(9+Math.random()*7)+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),17000);
+  }
+  addHeart();
+  setInterval(()=>{if(document.visibilityState==='visible')addHeart()},5200);
+})();
+
 /* Starry sky: generated with CSS, no images or external assets. */
 (function makeSky(){
   const sky=document.getElementById('sky');
@@ -270,34 +402,41 @@ function cardKey(e,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog
 function flipDua(card){card.classList.toggle('flipped')}
 function flipKey(e,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();flipDua(card)}}
 
-/* Friendly, light-hearted quiz. The correct choices are not personal facts. */
+/* Our little corner — ten questions, three choices each, no right or wrong answers. */
 const questions=[
- {q:"who is attu anna …",a:["CEO of a company" ,"Certified pookie + green flag","khadus and akdu"],correct:1,yes:"EXACTLY. Pookie status: confirmed,  also akdu ...Green flag behaviour: under observation. 💚",no:"Cute guess, but the official title is pookie + green flag and also akdu and khadus😌"},
- {q:"what are you gonna think when u are gonna get a text from my side?",a:["am really busy not now","naaaaaaaaaaaaaaaaa","hehehehehehehehehehehe"],correct:1,yes:"CORRECT. hehehehehehehehehehe 🤍",no:"hehehehehehehehehehehehehehe"},
- {q:"A green-flag pookie moving abroad should remember to…",a:["Forget everyone as soon as he lands","Work hard, make du'a, stay humble, and check in sometimes","Become famous and start charging for replies"],correct:1,yes:"THAT'S THE ONE, DUDE. May Allah bless your effort and keep your heart kind. Ameen. 💚",no:"Anna's very reasonable terms and conditions: make du'a, chase your dreams, stay humble, and text back sometimes. 😂"}
-]
-let qi=0,score=0,answered=false;
+ {q:"If we were together for an entire day, what would you choose?",a:["Going somewhere spontaneous","Staying in and talking for hours","Doing absolutely nothing, just being together"]},
+ {q:"What's your favourite thing about us?",a:["The way we talk","The comfort we share","The little moments that mean a lot"]},
+ {q:"If I suddenly went quiet, what would you do?",a:["Text me until I reply","Give me space but check on me","Wait for me to come around"]},
+ {q:"What would you want more of between us?",a:["More quality time","More affection","More honest conversations"]},
+ {q:"If you could relive one kind of moment with me, what would it be?",a:["Our late-night conversations","Our silly conversations","The moments when we got unexpectedly sweet"]},
+ {q:"What do you think I am to you?",a:["My favourite distraction","My comfort person","Someone I can't quite explain"]},
+ {q:"If we ever went on a proper date, what would you pick?",a:["A long drive","A cute café","A sunset walk"]},
+ {q:"What's one thing you secretly want from me?",a:["More attention","More reassurance","More affection"]},
+ {q:"Which describes our connection best?",a:["Unexpected","Complicated but special","Something I don't want to lose"]},
+ {q:"If I asked you to describe me in one word, what would it be?",a:["Comfort","Chaos","Favourite"]}
+];
+let qi=0,answered=false;
 const qEl=document.getElementById('question'),aEl=document.getElementById('answers'),fb=document.getElementById('feedback'),next=document.getElementById('next-question');
 function renderQuestion(){
  const q=questions[qi];document.getElementById('quiz-count').textContent=`QUESTION ${qi+1} OF ${questions.length}`;
  document.getElementById('quiz-progress').style.width=(qi/questions.length*100)+'%';qEl.textContent=q.q;fb.textContent='';next.hidden=true;answered=false;aEl.innerHTML='';
- q.a.forEach((label,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=label;b.onclick=()=>answerQuestion(i,b);aEl.appendChild(b)});
+ q.a.forEach((label)=>{const b=document.createElement('button');b.className='answer';b.textContent=label;b.onclick=()=>answerQuestion(b);aEl.appendChild(b)});
 }
-function answerQuestion(i,button){
- if(answered)return;answered=true;const q=questions[qi];const buttons=[...aEl.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);
- if(i===q.correct){score++;fb.textContent=q.yes}else fb.textContent=q.no;
- button.style.borderColor=i===q.correct?'#b9d7b5':'#e8b9d1';
+function answerQuestion(button){
+ if(answered)return;answered=true;const buttons=[...aEl.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);
+ button.style.borderColor='#c58f99';button.style.background='rgba(197,143,153,.14)';
+ fb.textContent="♡ Answer saved. I like knowing what is going on in that head of yours.";
  document.getElementById('quiz-progress').style.width=((qi+1)/questions.length*100)+'%';
- next.hidden=false;next.textContent=qi===questions.length-1?'See your result ✦':'Next question →';
+ next.hidden=false;next.textContent=qi===questions.length-1?'That’s our corner ♡':'Next question →';
 }
 let quizFinished=false;
 next.addEventListener('click',()=>{
- if(quizFinished){qi=0;score=0;quizFinished=false;renderQuestion();return}
+ if(quizFinished){qi=0;quizFinished=false;renderQuestion();return}
  if(qi<questions.length-1){qi++;renderQuestion();return}
  quizFinished=true;
- qEl.textContent=score===3?'Perfect score. You understood the assignment. ✨':score===2?'A pretty solid result. 🤍':'Quiz completed — that\'s what counts. ✨';
- aEl.innerHTML='';fb.textContent=`You got ${score} out of ${questions.length}. Real-life mission, dude: travel safely, work hard, make lots of du'a, and don't forget anna. 💚`;
- document.getElementById('quiz-progress').style.width='100%';next.textContent='Play again ↻';
+ qEl.textContent='That’s our little corner. ♡';
+ aEl.innerHTML='';fb.textContent='Thanks for answering all of these. No labels, no pressure — just a few little things I wanted to know about you. 🤍';
+ document.getElementById('quiz-progress').style.width='100%';next.textContent='Read them again ↻';
 });
 renderQuestion();
 
@@ -413,12 +552,9 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
       const question = questions[qi];
       const buttons = [...document.querySelectorAll("#answers .answer")];
       const selectedIndex = buttons.indexOf(answerButton);
-      const correct = selectedIndex === question.correct;
       track("quiz_answer", {
         question: question.q,
         answer: answerButton.textContent.trim(),
-        correct,
-        score: typeof score === "number" ? score : "",
         item: "Question " + (qi + 1)
       });
       return;
